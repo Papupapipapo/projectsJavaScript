@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esdeveniments de Ratons mes Curt</title>
+    <!--Pau Sarda Sanchez-->
+</head>
+<!--
+Generar un document HTML amb 6 botons <input type="button"/> o <button>. Cada botó haurà de respondre a un tipus d'esdeveniment de ratolí
+
+    onclick
+    ondblclick
+    onmousedown
+    onmouseup
+    onmouseover
+    onmouseout
+-->
+<body>
+    <div>
+        <button id="click">onClick</button>
+        <button id="dblclick">ondblclick</button>
+        <button id="mousedown">onmousedown</button>
+        <button id="mouseup">onmouseup</button>
+        <button id="mouseover">onmouseover</button>
+        <button id="mouseout">onmouseout</button>
+
+    </div>
+<!-- 4 o 5 lines-->
+    <script>
+        var buttons = document.getElementsByTagName("button"); //Creem un array que seran tots els botons
+        for (var i = 0; i <= buttons.length; i += 1) { //Recorrim tot el array i a cadascun li afegirem addEventListener segons el seu nom de id
+            buttons[i].addEventListener(buttons[i].id, function(event) {
+                alert(event.type);}, false); 
+        }
+    </script>
+</body>
+
+</html>

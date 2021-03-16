@@ -1,0 +1,37 @@
+<html>
+<head>
+	<title>Comprovació mail</title>
+	<script type="text/javascript">
+		function comprova(){
+			var patro=/^\d+\s[\w\s]+\w{4,6},\s[\w\s]+,\s\w{2}\s\d{5}$/;
+			var contin=document.getElementById("correu").value;
+			if(patro.test(contin)){
+				alert("El patró és correcte!");
+				document.getElementById("par").innerHTML+=contin+"<br>";
+				document.getElementById("cops").value++;
+				if(document.getElementById("cops").value==2)
+				{
+					alert("Enhorabona!! Has complert l'activitat");
+				}
+			}
+			else
+			{
+				alert("Patró incorrecte");
+			}
+		}
+	</script>
+</head>
+<body>
+	<form>
+		<p>Troba dos valors que acompleixin el següent patró</p>
+		<p><i>Patró</i>: <b>/^\d+\s[\w\s]+\w{4,6},\s[\w\s]+,\s\w{2}\s\d{5}$/</b></p>
+		<input type="text" id="correu" size="40"/> <br>
+		<input type="button" id="boto" value="Comprova"/>
+		<input type="hidden" value="0" id="cops"/>
+	</form>
+	<p id="par"></p>
+	<script type="text/javascript">
+		document.getElementById("boto").addEventListener('click',comprova,false);
+	</script>
+</body>
+</html>

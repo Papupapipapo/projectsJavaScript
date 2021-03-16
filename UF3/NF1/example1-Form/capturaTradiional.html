@@ -1,0 +1,12 @@
+<html>
+    <body>
+        <button>The time is?</button>
+        <p id="demo"></p>
+        <script>
+        document.getElementsByTagName("button")[0].onclick = printDate;
+        function printDate(){
+            document.getElementById('demo').innerHTML= Date();
+            }
+        </script>
+    </body>
+</html>

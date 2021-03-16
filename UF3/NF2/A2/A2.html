@@ -1,0 +1,183 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Activitat Aprenentatge 2</title>
+	<script src="DOM_A2.js"></script>
+</head>
+<body>
+	<h1>Activitat 2: Manipulant el DOM</h1>
+	<!-- Exercici 1 -->
+	<p><b>Exercici 1</b>: Quan es polsi el botó s'ha d'esborrar el text i la imatge de l'span i substituir-lo per una imatge d'una estrella encesa. NOTA: usa la propietat <i><u>innerHTML</u></i></p>
+	<span id="field">
+		Wish upon a
+		<img src="star_off.gif">
+	</span>
+	<br /><input type="button" value="Canviar"/>
+	<hr />
+	<!-- Exercici 2 -->
+	<p><b>Exercici 2</b>: Quan es polsi el botó s'ha d'eliminar l'estrella. Sense usar InnerHTML (obre molts forats de seguretat)</p>
+	<span>
+		Shooting
+		<img id="fallenstar" src="star_on.gif">
+	</span>
+	<br /><input type="button" value="Dispara!"/>
+	<hr />
+	<!-- Exercici 3 -->
+	<p><b>Exercici 3</b>: Quan es polsi el botó s'ha de moure l'estrella al lloc indicat. Nota:<i>Quan movem un node existent, tant el node com els seus fills es mouen amb ell</i></p>
+	<span>
+		<span id="source">
+			Aquí hi ha una estrella:
+			<img src="star_on.gif">
+		</span>
+		<span id="target">
+			Mou-la aquí:
+		</span>
+	</span>
+	<br /><input type="button" value="Mou"/>
+	<hr />
+	<!-- Exercici 4 -->
+	<p><b>Exercici 4</b>: Quan es polsi el botó s'ha de resoldre l'equació, afegint un node de tipus text</p>
+	<span id="math">
+		6 * 7 =
+	</span>
+	<br /><input type="button" value="Calcular"/>
+	<hr />
+	<!-- Exercici 5 -->
+	<p><b>Exercici 5</b>: Quan es polsi el botó s'ha de crear un element de tipus imatge, posar a la propietat src la imatge d'una estrella i posar-la dins l'span buit</p>
+	<span id="sky">
+	</span>
+	<br /><input type="button" value="Crear"/>
+	<hr />
+	<!-- Exercici 6 -->
+	<p><b>Exercici 6</b>: Quan es polsi el botó ha d'aparèixer el text corresponent dins el div buit, de manera que la primera lletra tingui una grandària de 10px, i les següents vagin augmentant aquesta grandària en 5px, fins que s'arribe a la meitat de del text, aleshores anirem baixant la grandària en 5px fins el final (NOTA:<i>Cada lletra deuria estar en la seva pròpia etiqueta span</i></p>
+	<div id="muntanyaRussa"></div>
+	<input type="button" id="e6" value="Transformar" onclick="exercici6();"/>
+	<p><b>Ampliació:</b>Fes formes sinusoidals o variacions de color</p>
+	<hr />
+	<!--Exercici 7 -->
+	<p><b>Exercici 7</b>: Amb una única funció aconsegueix que quan passem el ratolí per cadascuna de les estrelles, aquestes es vagin encenent</a></p>
+
+	<table id="taula_estrelles">
+	  	<tr>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    </tr>
+	    <tr>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    </tr>
+	    <tr>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    </tr>
+	    <tr>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    </tr>
+	    <tr>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    </tr>
+	    <tr>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    </tr>
+	    <tr>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    </tr>
+	    <tr>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    </tr>
+	    <tr>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    </tr>
+	    <tr>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    	<td><img src="star_off.gif"></td>
+	    </tr>
+	</table>
+</body>
+</html>

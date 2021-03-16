@@ -1,0 +1,20 @@
+<html>
+    <body>
+        <p> Escriu un número entre l '1 i el 10, si us plau:</p>
+            <form action="#">
+                <input id="numb">
+                <button type="button" onclick="myFunction()">Submit</button>
+            </form>
+                    <script>
+                        function myFunction() {
+                            var x;
+                            x = document.getElementById("numb").value;
+                            if (isNaN(x) || x < 1 || x > 10) {
+                                alert("Input notvalid");
+                            } else {
+                                alert("Input OK");
+                            }
+                        }
+                    </script>
+    </body>
+</html>

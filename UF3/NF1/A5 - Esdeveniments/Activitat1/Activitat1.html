@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Activitat 1</title>
+	<link rel="stylesheet" type="text/css" href="estilsa1.css">
+</head>
+<body>
+	<img src="hp.jpg">
+	<div>
+		<div id="un">0</div>
+		<div id="dos">0</div>
+		<div id="tres">0</div>
+		<div id="quatre">0</div>
+		<div id="cinc">~</div>
+		<div id="sis">0</div>
+	</div>
+	<script>
+			var imatge = document.getElementsByTagName("img")[0];
+			//UN SERA Recompte del número de clicsque es fan sobre la imatge
+			imatge.addEventListener("click", function(event) {canviarTexte("un",event)}, false);
+			//DOS Recompte del número de clics doblesque es fan sobre la imatge
+			imatge.addEventListener("dblclick", function(event) {canviarTexte("dos",event)}, false);
+			//TRES Recompte del número de vegades que el ratolí es posa sobrela imatge
+			imatge.addEventListener("mouseover", function(event) {canviarTexte("tres",event)}, false);
+			//QUAT Recompte del número de vegades que el ratolí surtde la imatge
+			imatge.addEventListener("mouseout", function(event) {canviarTexte("quatre",event)}, false);
+			//CINC Última lletraque s’ha polsat al teclat
+			document.getElementsByTagName("body")[0].addEventListener("keyup",  function(event){lastKey(event)} , false);
+			//SIS Coordenada X de la imatge on s’ha fet clic
+			imatge.addEventListener("mousemove", function(event) {canviarmove(event)}, false);
+
+			//erquè cada cop que es cliqui el botó central del ratolí a la imatge, es  resti  una  unitat  dels  clics  totals  
+			//(quadre  vermell).  Feu  també  que  aquest  comptador  no pugui baixar més enllà de 0. 
+			imatge.addEventListener("auxclick", function(event) {restarRed(event)}, false);
+
+			function canviarTexte (id,e){
+				var elementActual = document.getElementById(id); //Li direm quin div canviar
+				var elementActualValor = Number(elementActual.innerHTML); //El canviem a numero, ja que sino es confón i cuan li diem de sumar diu que es texte, fent concat
+				if(elementActualValor < 99){
+					elementActual.innerHTML = elementActualValor + 1;
+				}
+			}
+
+			function canviarmove(e){
+				document.getElementById("sis").innerHTML = e.clientX;
+			}
+
+			function restarRed(e){
+				var elementActual = document.getElementById("un");
+				var elementActualValor = Number(elementActual.innerHTML);
+				if(elementActualValor > 0 ){
+					elementActual.innerHTML = elementActualValor - 1;
+				}
+			}
+
+			function lastKey(e){
+				var codi = e.code; //Li donem per var, ja que es confon bastant sino
+				if(codi.includes("Key")){
+					document.getElementById("cinc").innerHTML = e.key;
+				}
+				
+			}
+	</script>
+</body>
+</html>

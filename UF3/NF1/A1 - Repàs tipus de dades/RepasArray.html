@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Repas Array</title>
+</head>
+
+<body>
+	<h1>Mostra coses</h1>
+	<p id="act3"></p>
+	<p id="act4"></p>
+	<p id="act5"></p>
+</body>
+	
+	<script>
+		var equips = ["Barça", 33, {nom: "Español", entrenador: "Ruby"}, null, "Madrid", {nom: "Girona", socis: 2836}];
+		//Quin tipus d'objecte és la variable equips?
+		//La variable equips es un array multidimensional
+
+		//Quin tipus de dades conté?
+			//String, Number, null
+
+
+		//Escriu el codi necessari per mostrar per pantalla els equips: Barça, Español, Madrid, Girona.
+		//tambe es valid equips[2].nom 	
+		var ans = (equips[0] + " , " + equips[2]["nom"] + " , " + equips[4] + " , " + equips[5]["nom"]);
+		document.getElementById('act3').innerHTML =  ans;
+		
+		//Escriu el codi necessari per mostrar l'entrenador de l'Español.
+		var ans = (equips[2]["entrenador"]);
+		
+		document.getElementById('act4').innerHTML =  ans;
+		
+		//Escriu el codi necessari per mostrar el número de socis del Girona.
+		var ans = (equips[5]["socis"]);
+		document.getElementById('act5').innerHTML =  ans;
+	</script>
+</html>

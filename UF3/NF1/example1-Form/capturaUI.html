@@ -1,0 +1,17 @@
+<html>
+    <body>
+        
+        <script>
+        document.getElementsByTagName("html")[0].addEventListener("click", function(event) {print(event);}, false);
+        document.getElementsByTagName("body")[0].addEventListener("keyup", function(event) {print(event);}, false);
+        function print(event){
+            if (event.type== "click"){
+                alert(event.type+ ". CoordenateX: " + event.clientX);
+                }
+            else{
+                alert(event.type+ ". Keycode: " + event.keyCode);
+                }
+            }
+            </script>
+    </body>
+</html>

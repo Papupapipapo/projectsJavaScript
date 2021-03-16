@@ -1,0 +1,31 @@
+<html>
+<head>
+	<title>Comprovació regExp</title>
+	<script type="text/javascript">
+		function comprova(){
+			var patro = document.getElementById("patro").value;
+			var contin= document.getElementById("texte").value;
+
+			if(eval(patro).test(contin)){
+				document.getElementById("par").innerHTML = "<b><span style='color:green'>OK!</span></b> El text compleix el patro de l'expressió regular";
+			}
+			else
+			{
+				document.getElementById("par").innerHTML = "<b><span style='color:red'>INCORRECTE!</span></b> El text <b>NO</b> compleix el patro de l'expressió regular";
+			}
+		}
+	</script>
+</head>
+<body>
+	<form>
+		<label>Expresio regular: </label><input type="text" id="patro" size="40"/> <br>
+		<label>Texte a comprovar: </label><input type="text" id="texte" size="40"/> <br>
+		<input type="button" id="boto" value="Comprova"/>
+	</form>
+	<p id="par"></p>
+
+	<script type="text/javascript">
+		document.getElementById("boto").addEventListener('click',comprova,false);
+	</script>
+</body>
+</html>

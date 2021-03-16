@@ -1,0 +1,13 @@
+<html>
+	<body>
+		<button>I'm a button</button>
+		<script>
+        document.getElementsByTagName("button")[0].addEventListener("click", function(event) {print(this,event);}, false);
+        document.getElementsByTagName("body")[0]. addEventListener("click", function(event) {print(this,event);}, false);
+        function print(elem,event){
+            alert(elem.nodeName);
+            event.stopPropagation();
+            }
+        </script>
+	</body>
+</html

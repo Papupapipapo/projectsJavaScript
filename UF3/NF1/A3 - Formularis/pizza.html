@@ -1,0 +1,133 @@
+<html>
+   <head>
+        <title>Comanda de pizzes</title>
+        <meta charset="utf-8">
+        <!--Pau Sarda Sanchez-->
+   </head>
+   <body>
+       <h1>Comanda de pizzes</h1>
+       <form name="pizzes" action="https://httpbin.org/post" onsubmit="return validateForm()" method="POST">
+        <p>Customer name: <input type="text" name="nom"></p>
+        <div id="errorNom"></div>
+        <p>Telephone: <input type="text" name="telefon"></p>
+        <div id="errorTelef"></div>
+        <p>E-mail address: <input type="email" name="email"></p>
+        <div id="errorEmail"></div>
+
+        <fieldset>
+            <legend>Pizza Size:</legend> 
+            <input type="radio" id="small" name="tamany" value="small">
+            <label for="small">Small</label><br>
+            <input type="radio" id="medium" name="tamany" value="medium">
+            <label for="medium">Medium</label><br>
+            <input type="radio" id="large" name="tamany" value="large">
+            <label for="large">Large</label>
+            <div id="errorSize"></div>
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>Pizza Toppings:</legend>
+            <input type="checkbox" id="bacon" name="ingredients" value="bacon">
+            <label for="bacon">Bacon</label><br>
+            <input type="checkbox" id="cheese" name="ingredients" value="cheeseExtra">
+            <label for="cheese">Extra Cheese</label><br>
+            <input type="checkbox" id="onion" name="ingredients" value="onion">
+            <label for="onion">Onion</label><br>
+            <input type="checkbox" id="mushroom" name="ingredients" value="mushroom">
+            <label for="mushroom">Mushroom</label>
+            <div id="errorTopping"></div>
+        </fieldset>
+        <p><label for="delivery">Preferred delivery time:</label>
+        <input type="time" id="delivery" name="deliveryTime"></p>
+        <div id="errorDelivery"></div>
+        
+        <textarea rows="4" cols="50" name="comment" form="usrform" placeholder="Enter text here..."></textarea><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    
+    <script>
+        function errorZona(nomZona){ 
+            return "<p style='color:red;'>El camp "+ nomZona+" esta buit, cal omplir-lo</p>" 
+        } //Missatge predefinit per a estalviar redundancia de codi i que se entengui quin es el error
+        
+        var blank = ""; //Sera per que cada vegada que s'arregli algun error es borri aquell paragraf
+        function validateForm() {
+            var fals = false; //Comprova que no hagi cap error
+
+            if(!!!document.forms["pizzes"]["nom"].value){
+                document.getElementById("errorNom").innerHTML = errorZona("nom");
+                fals = true;
+            }else{
+                document.getElementById("errorNom").innerHTML = blank;
+            }
+
+            if(!!!document.forms["pizzes"]["telefon"].value){
+                document.getElementById("errorTelef").innerHTML = errorZona("telefon");
+                fals = true;
+            }else{
+                document.getElementById("errorTelef").innerHTML = blank;
+            }
+            
+            if(!!!document.forms["pizzes"]["email"].value){
+                document.getElementById("errorEmail").innerHTML = errorZona("email");
+                fals = true;
+            }else{
+                document.getElementById("errorEmail").innerHTML = blank;
+            }
+
+            if(!!!document.forms["pizzes"]["tamany"].value){
+                document.getElementById("errorSize").innerHTML = errorZona("tamany");
+                fals = true;
+            }else{
+                document.getElementById("errorSize").innerHTML = blank;
+            }
+
+            //Per a toppings farem un arrey i contarem els que estiguin checked
+            var toppings = document.getElementsByName('ingredients'); //Agafa tots els toppings i els fara un array
+            var contadorToppings = 0;
+
+            for (var i=0;i<toppings.length;i++) 
+            {
+                if (toppings[i].checked) 
+                {
+                    contadorToppings++; //Si esta checked el donarem com a un ingredient valid
+                }
+            }
+
+            if (contadorToppings == 0){ //Si no trobem cap checked, error.
+                document.getElementById("errorTopping").innerHTML = "<p style='color:red;'>Obligatoriament ha de haber un topping</p>";
+                fals = true;
+            }else if(contadorToppings > 3){ //Si trobem mes de tres, error.
+                document.getElementById("errorTopping").innerHTML = "<p style='color:red;'>Solament pots tenir 3 toppings</p>";
+                fals = true;
+            } else{
+                document.getElementById("errorTopping").innerHTML = blank;
+            }
+
+            //FI DE TOPPING
+
+            if(!!!document.forms["pizzes"]["deliveryTime"].value){
+                document.getElementById("errorDelivery").innerHTML = errorZona("delivery");
+                fals = true;
+            }else{
+                document.getElementById("errorDelivery").innerHTML = blank;
+            }
+
+            return !fals; //Fara que si el nostre var que comprova qque no hagi cap error dona negatiu (osigui que no ha hagut casos) doncs retorni true osigui que ha anat be
+
+        }
+
+
+    /*Tasques
+    
+    --No hi pot haver cap camp buit, excepte "Delivery instruccions".
+    --Si un usuari deixa un camp buit, en el moment d'intentar fer la comanda li ha de sortir un missatge informant-lo d'allò que s'ha descuidat (alert, modal, escrit en el propi formulari, etc.)
+    ---Ha d'escollir només una mida de pizza.
+    ---Ha d'escollir com a mínim un ingredient i com a màxim 3 (alerta que hi ha 4 possibilitats).
+    ---El mètode d'enviament de dades ha de ser POST i l'acció del formulari ha d'anar cap a https://httpbin.org/post (és una petita aplicació web que mostra les capçaleres de les peticions al servidor).
+
+    */
+        </script>
+</body>
+</html>

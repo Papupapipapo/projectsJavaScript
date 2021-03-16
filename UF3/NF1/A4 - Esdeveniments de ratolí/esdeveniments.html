@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esdeveniments de Ratons</title>
+</head>
+<body>
+    <div>
+        <button>onClick</button>
+        <button>ondblclick</button>
+        <button>onmousedown</button>
+        <button>onmouseup</button>
+        <button>onmouseover</button>
+        <button>onmouseout</button>
+
+    </div>
+
+    <script>
+    document.getElementsByTagName("button")[0].addEventListener("click", function(event) {print(event);}, false);
+    document.getElementsByTagName("button")[1].addEventListener("dblclick", function(event) {print(event);}, false);
+    document.getElementsByTagName("button")[2].addEventListener("mousedown", function(event) {print(event);}, false);
+    document.getElementsByTagName("button")[3].addEventListener("mouseup", function(event) {print(event);}, false);
+    document.getElementsByTagName("button")[4].addEventListener("mouseover", function(event) {print(event);}, false);
+    document.getElementsByTagName("button")[5].addEventListener("mouseout", function(event) {print(event);}, false);
+    
+        function print(event){
+            var texte = "Has fet ";
+            
+            if(event.type == "click"){
+                texte += "un clic";
+            }else if(event.type == "dblclick"){
+                texte += "doble Click";
+            }else
+            if(event.type == "mousedown"){
+                texte += "mousedown. El ratoli ha estat apretat aldamunt";
+            }else
+            if(event.type == "mouseup"){
+                texte += "mouseup. El ratoli ha estat deixat";
+            }else
+            if(event.type == "mouseover"){
+                texte += "mouseover. El ratoli ha pasat per el damunt";
+            }else
+            if(event.type == "mouseout"){
+                texte += "mouseOut. El ratoli ha sortit";
+            } 
+            alert(texte);
+        }
+
+    </script>
+</body>
+<!--
+Generar un document HTML amb 6 botons <input type="button"/> o <button>. Cada botó haurà de respondre a un tipus d'esdeveniment de ratolí
+
+    onclick
+    ondblclick
+    onmousedown
+    onmouseup
+    onmouseover
+    onmouseout
+-->
+</html>

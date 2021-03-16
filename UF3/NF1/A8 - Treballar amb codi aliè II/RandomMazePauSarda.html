@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Random Maze - PauSarda </title>
+        <style>
+
+            body {
+                background-color: #e58b93;
+            }
+            div.fragmentHoritzontal{
+                border-left: 47px solid #edea5c;
+                border-right: 47px solid #edea5c;
+                border-top: 30px solid #edea5c;
+                border-bottom: 30px solid #edea5c;
+                position:fixed;
+            }
+            div.fragmentVertical{ 
+                position:fixed;
+                border-left: 30px solid #edea5c;
+                border-right: 30px solid #edea5c;
+                border-top: 47px solid #edea5c;
+                border-bottom: 47px solid #edea5c;
+            }
+            div.checkpoint1 {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 30px;
+                border: 30px solid #8bdce5;
+            }
+            div.checkpoint2Vertical {
+                position: fixed;
+                z-index: 9999999;
+                border-left: 30px solid #8bdce5;
+                border-right: 30px solid #8bdce5;
+                border-top: 47px solid #8bdce5;
+                border-bottom: 47px solid #8bdce5;
+            }
+            div.checkpoint2Horitzontal{
+                border-left: 47px solid #8bdce5;
+                border-right: 47px solid #8bdce5;
+                border-top: 30px solid #8bdce5;
+                border-bottom: 30px solid #8bdce5;
+                z-index: 9999999;
+                position:fixed;
+            }
+            div.lava {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div class="lava btn" id="btn_lava"></div>
+        <div id="new"></div>
+        <div class="checkpoint1 btn" id="btn_checkpoint1"></div>
+        
+        
+
+        <script>
+            var gameState;
+
+            //Aixo sera per a un sistema de HighScore i racha, aixi incentiva a seguir jugant com si fossin raches
+            var RachaNivells = 0;
+            var bestStreak = RachaNivells;
+
+            function checkHighScore(){
+                if(RachaNivells > bestStreak){
+                    bestStreak = RachaNivells;
+                }
+            }
+            
+            function init()
+            {
+                gameState = "OFF";
+                document.getElementsByTagName("BODY")[0].style.cursor = "default";
+                document.getElementById("btn_lava").addEventListener("mouseover", gameOver);
+                document.getElementById("btn_checkpoint1").addEventListener("click", changeGameState);
+                document.getElementById("btn_checkpoint1").addEventListener("mouseover", checkArrive);
+                randomlaberint();
+                
+                if(RachaNivells == 0){ //Evita que es mostri cada vegada que fa un nou nivell
+                    if (!confirm("Hi Dorothy! I'm Glinda.\n\nFollow the yellow brick road to the Emerald City, where the Wizard of Oz might be able to help her get back home.\n\nClick on any Emerald box and try to arrive to the next box. Be careful, don't fall to lava!"))
+                    terminate();
+                }
+                
+            }
+
+            function terminate()
+            {
+                gameState = "OFF";
+
+                document.getElementById("btn_lava").removeEventListener("mouseover", gameOver);
+                document.getElementById("btn_checkpoint1").removeEventListener("click", changeGameState);
+                document.getElementById("btn_checkpoint2").removeEventListener("click", changeGameState);
+                document.getElementById("btn_checkpoint2").removeEventListener("mouseover", checkArrive);
+                document.getElementById("btn_checkpoint1").removeEventListener("mouseover", checkArrive);
+                document.getElementsByTagName("BODY")[0].style.opacity = 0.1;
+            }
+
+            function gameOver()
+            {
+                if (gameState != "OFF")
+                {
+                    document.getElementsByTagName("BODY")[0].style.cursor = "default";
+                    checkHighScore();
+                    
+                    if (confirm("Game Over.\nYou did a streak of " +RachaNivells + " completed levels\nThe highscore is "+ bestStreak+"\nDo you wanna try again?")){
+                        RachaNivells = 0;
+                        init();
+                    }
+                        
+                    else
+                        terminate();
+                }
+            }
+
+            function changeGameState()
+            {
+                if (gameState == "OFF")
+                {
+                    gameState = "ON";
+                    document.getElementsByTagName("BODY")[0].style.cursor = "crosshair";
+                    console.log("Game is ON");
+                    document.getElementById(this.id).removeEventListener("mouseover", checkArrive);
+                }
+                else
+                {
+                    gameState = "OFF";
+                    console.log("Game is OFF");
+                }
+            }
+
+            function checkArrive()
+            { 
+                if (gameState == "ON")
+                {
+                    gameState = "OFF";
+                    RachaNivells++;
+                    if (confirm("Congratulations! You've arrived. Do you want to do another level?\nCurrent streak of completed levels is " + RachaNivells))
+                        init();
+                    else
+                        terminate();
+                }
+            }
+
+            /*
+                Aqui farem el laberint random, es una mica pocho pero sempre creara un nou i que estara dins de la pantalla
+                Per a fer laberint random he fet que sempre començara adalt a la esquerra, aixi li diem que el primer punt on apareixera es el top 90
+                D'alli di direm que el currenTop es la ultima posicio on em posat algo, aixo ens servira per a seguir per on estem apuntant per apareixer a la pantalla
+
+                D'alli inicialitzem variables, la mes notable sent lastDir que ens servira per a evitar un bug
+                Un for que anira generant un html el cual sera tot el recorregut
+
+                Afegirem el checkpoint2 amb els seus events i ja estaria fet
+            */
+            function randomlaberint(){
+                var startTop = 90;
+                var startLeft = 0; 
+
+                var currentTop = startTop;
+                var currentLeft = startLeft;
+
+                var html = "";
+                var randomNum = new Number();
+                var randomSegment;
+                var lastDir = 0;
+
+                //Li dic 50 ja que 50 tiles em sembla just
+                for(var i = 50; i > 0;i--){
+                    randomNum = (Math.floor(Math.random() * 2) + 1);
+                    randomPosNeg = (Math.floor(Math.random() * 3) + 1);
+                    console.log(lastDir);
+
+                    if(randomNum == 2 || i % 3 == 0){
+                        randomSegment = 'fragmentHoritzontal';
+                    }else if ((randomNum == 1 || i % 5 == 0)){
+                        randomSegment = 'fragmentVertical';
+                    }
+
+                    html += '<div class="'+ randomSegment + ' btn" style ="top:'+ currentTop +'px;left:'+currentLeft+'px"></div>';
+
+                    
+                    //Els que resten mirem que la ultima direcció sigui una altre ja que sino restarem en el ultim aparegut, de manera contraintuitiva
+                    //Tambe que no es surtin de la tipica pantalla landscape
+                    if(randomSegment == "fragmentHoritzontal"){
+                             if((randomPosNeg == 3 && lastDir == 0 && (currentLeft - 56) > 0 && currentLeft >= 1600) || currentTop  > 800){
+                                currentLeft += -28;
+                                lastDir = 1;
+                            }else if((currentLeft + 56) < 1848){
+                                currentLeft += 56;
+                                lastDir = 1;
+                            }
+                    }else if((((randomPosNeg == 2) && lastDir == 1) || (currentLeft >= 1600)) && ((currentTop - 94) > 0) ){
+                                currentTop += -47;
+                                lastDir = 0;
+                            }else 
+                            if((currentTop + 94) < 871){
+                                currentTop += 94;
+                                lastDir = 0;
+                            }
+                            
+                }
+
+                //aqui li direm que segons quina sigui la ultima posicio apareixera d'una manera o altre el segons checkpoint
+                if(lastDir == 0){ //Vertical
+                    html += '<div class="checkpoint2Vertical btn" id="btn_checkpoint2" style ="top:'+ currentTop +'px;left:'+currentLeft+'px"></div>';
+                }else{
+                    html += '<div class="checkpoint2Horitzontal btn " id="btn_checkpoint2" style ="top:'+ currentTop +'px;left:'+currentLeft+'px;"></div>';
+                }
+                
+                
+                document.getElementById('new').innerHTML = html; //Li direm que el div es dibuixi tot
+
+                loadCheckpointevents(); //Afegim els dos esdeveniments del checkpoint2
+                
+            }
+
+            function loadCheckpointevents(){
+                document.getElementById("btn_checkpoint2").addEventListener("click", changeGameState);
+                document.getElementById("btn_checkpoint2").addEventListener("mouseover", checkArrive);
+            }
+
+            init();
+        </script>
+
+    </body>
+</html>

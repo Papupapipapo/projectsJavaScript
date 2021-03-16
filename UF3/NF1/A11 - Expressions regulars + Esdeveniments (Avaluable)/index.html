@@ -1,0 +1,149 @@
+<html>
+    <head>
+        <title>Validador d'expressions regulars amb esdeveniments (Revisat)</title>
+        <meta charset="UTF-8">
+        <script src="evaluate.js"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+        <style>
+            .container {
+                font-family: 'Roboto', sans-serif;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+				height: 100%;
+            }
+            .green {
+                color: #00bb00;
+            }
+            .center {
+                padding: 20px 0;
+                margin: 10px;
+                text-align: center;
+            }
+
+            input[type=text] {
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+                text-align: center;
+            }
+        </style>
+
+
+
+        <script type="text/javascript">
+        //PAU SARDA 
+            
+         window.onload = function(){
+
+            document.getElementById("inputEx1").addEventListener("keyup", function() { //Escriu la teva data de naixement en format DD-MM-AAAA Recorda que un any té 12 mesos i cada mes, com a molt, 31 dies.
+                var inputActual = document.getElementById("inputEx1").value;
+                checkAns(inputActual,/^([0-2]\d|3[0-1])-(1[0-2]|0\d)-\d{4}$/,"inputEx1")
+            }, false);
+
+
+            document.getElementById("inputEx2").addEventListener("keyup", function() { //Escriu la teva data de naixement en format DD-MM-AAAA o DD/MM/AAAA 
+                var inputActual = document.getElementById("inputEx2").value;
+                
+                //Li direm que comprovi si apareixen les / dues vegades, si es aixi que el String donat per a comprovar les interpreti com a -, aixi estalviant treball a el regex
+                if(inputActual.indexOf("/") != -1){
+                        if(inputActual.indexOf("/",inputActual.indexOf("/") +1) != -1){
+                            inputActual = inputActual.replace(/\//g, "-")
+                        }
+                    }
+                checkAns(inputActual,/^([0-2]\d|3[0-1])-(1[0-2]|0\d)-\d{4}$/,"inputEx2")
+            
+            }, false);
+
+
+            document.getElementById("inputEx3").addEventListener("keyup", function() {
+                var inputActual = document.getElementById("inputEx3").value;
+                //Per a que permeti multiples formats, li dic que si troba un espai en blanc, que els tregui tots. No en voldrem
+                if(inputActual.indexOf(" ")!= -1){
+                    inputActual = inputActual.replace(/\s/g, "")
+                }
+                checkAns(inputActual,/^[6-9]\d{8}$/,"inputEx3")}, false);
+
+
+            document.getElementById("inputEx4").addEventListener("keyup", function() {
+                var inputActual = document.getElementById("inputEx4").value;
+                //El mateix que el d'abans, pero ara amb uns parametres de mes
+                if(inputActual.indexOf(" ")!= -1){
+                    inputActual = inputActual.replace(/\s/g, "")
+                }
+                checkAns(inputActual,/^\+[0-9]{3}[6-9]\d{8}$/,"inputEx4")}, false);
+
+
+            document.getElementById("inputEx5").addEventListener("keyup", function() {
+                var inputActual = document.getElementById("inputEx5").value;
+                checkAns(inputActual,/^(?=.*?[a-zçñ])(?=.*?[0-9]).{8,}$/i,"inputEx5")}, false); 
+            /*
+                    Aqui li farem un lookAhead(?=) els cuals no segueixen un ordre, sino miren si el match si quera es posible, fent que aixi puguin tenir el ordre que sigui,
+                    i comprovem que tinguem que hagi el requerit. Fent que enralitat el unic que si mira en ordre es que hagi 8 caracters els que siguin, pero els lookahead 
+                    s'aseguren dels requisits
+            */
+         }
+        function checkAns(inputActual,regex,nomInput){
+            var numInput = nomInput.substring(nomInput.length - 1, nomInput.length);
+           //Una vegada dins de la funcio, li direm que agafi el numero del nom del input, aixi tenint sempre quina id haurem de canviar
+
+           //I li direm que evalui el regex actual amb el inputActual(ja modificat si escau)
+            if(eval(regex).test(inputActual)){
+				loadTick(("checkEx" + numInput))
+			}
+			else
+			{
+				unTick(("checkEx" + numInput))
+            }
+        }
+        function unTick(idTick){ //En cas de no donar correcte i que el estil estaba en block, es tornara en none el display
+            if(document.getElementById(idTick).style.display == "block"){
+                document.getElementById(idTick).style.display = "none";
+            }
+            
+        }
+        function loadTick(idTick){ //Aqui canviarem el display de el tick de none a block i en cuant ja li doni al boto tornara a ser invisible
+            document.getElementById(idTick).style.display = "block";
+        }
+                    
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="center">
+                <label>Escriu la teva data de naixement en format DD-MM-AAAA </label>
+                <i id="checkEx1" class="fas fa-check green" style="display: none;"></i><br/>
+                <label style="font-style: italic;">Recorda que un any té 12 mesos i cada mes, com a molt, 31 dies.</label>
+                <input type="text" id="inputEx1">
+            </div>
+            <div class="center">
+                <label>Escriu la teva data de naixement en format DD-MM-AAAA o DD/MM/AAAA </label>
+                <i id="checkEx2" class="fas fa-check green" style="display: none;"></i>
+                <input type="text" id="inputEx2">
+            </div>
+            <div class="center">
+                <label>Escriu un número de telèfon <u>mòbil o fixe</u> d'Espanya. Formats vàlids (977123456, 977 123 456, 97 712 34 56) </label>
+                <i id="checkEx3" class="fas fa-check green" style="display: none;"></i>
+                <input type="text" id="inputEx3">
+            </div>
+            <div class="center">
+                <label>Escriu un número de telèfon amb els formats anteriors i que a més sigui opcional el codi internacional en format +034 (tres dígits), per exemple +034 977 123 456, +034 977123456, +034977123456, etc.</label>
+                <i id="checkEx4" class="fas fa-check green" style="display: none;"></i>
+                <input type="text" id="inputEx4">
+            </div>
+            <div class="center">
+                <label>Escriu una contrasenya que contingui lletres i números i que tingui més de 8 caràcters</label>
+                <i id="checkEx5" class="fas fa-check green" style="display: none;"></i><br/>
+				<label style="font-style: italic;">La contrasenya ha de ser en <a href="https://ca.wikipedia.org/wiki/Alfabet_llat%C3%AD" target="_blank">alfabet llatí</a> variant espanyola-catalana.</label>
+                <input type="text" id="inputEx5">
+            </div>
+        </div>
+    </body>
+</html>

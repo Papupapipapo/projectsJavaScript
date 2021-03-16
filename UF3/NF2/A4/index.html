@@ -1,0 +1,333 @@
+<html>
+	<head>
+		<title>Christmas Tree</title>
+		<style>
+			body {
+				background-color: #21252b; /* For browsers that do not support gradients */
+				background-image: linear-gradient(#606a7a, #21252b);
+				height: 100%;
+			}
+			.tree {
+				width: 80%;
+				min-width: 600px;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				-ms-transform: translate(-50%, -50%); /* IE 9 */
+				-webkit-transform: translate(-50%, -50%); /* Safari */
+				transform: translate(-50%, -50%); /* Standard syntax */
+				text-align: center;
+			}
+			.fork, .star, .pot {
+				margin: 0 auto;
+			}
+			.light_pixel {
+				display: inline-block;
+			}
+			.green {
+				background-color: #8dc73f;
+			}
+			.red {
+				background-color: #ef1c23;
+			}
+			.brown {
+				background-color: #aa782c;
+			}
+			.yellow {
+				background-color: #fef102;
+			}
+			.blue {
+				background-color: #0072bb;
+			}
+			
+			@media only screen and (orientation: landscape) {
+				.fork, .star, .pot {
+					height: 3.2vh;
+				}
+				.light_pixel {
+					width: 3vh;
+					height: 3vh;
+				}
+			}
+			
+			@media only screen and (orientation: portrait) {
+				.fork, .star, .pot {
+					height: 3.2vw;
+				}
+				.light_pixel {
+					width: 3vw;
+					height: 3vw;
+				}
+			}
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="xmas.js"></script>
+	</head>
+	<body>
+		<div class="tree">
+			<div class="star">
+				<div class="light_pixel yellow"></div>
+			</div>
+			<div class="star">
+				<div class="light_pixel yellow"></div>
+				<div class="light_pixel yellow"></div>
+				<div class="light_pixel yellow"></div>
+			</div>
+			<div class="star">
+				<div class="light_pixel yellow"></div>
+			</div>
+			<div class="fork">
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+			</div>
+			<div class="fork">
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel yellow"></div>
+			</div>
+			<div class="fork">
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel blue"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+			</div>
+			<div class="fork">
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+			</div>
+			<div class="fork">
+				<div class="light_pixel yellow"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+			</div>
+			<div class="fork">
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+			</div>
+			<div class="fork">
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel blue"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+			</div>
+			<div class="fork">
+				<div class="light_pixel yellow"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel yellow"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+			</div>
+			<div class="fork">
+				<div class="light_pixel green"></div>
+				<div class="light_pixel yellow"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+			</div>
+			<div class="fork">
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel yellow"></div>
+				<div class="light_pixel green"></div>
+			</div>
+			<div class="fork">
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel blue"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+			</div>
+			<div class="fork">
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel yellow"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+			</div>
+			<div class="fork">
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel blue"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel yellow"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+			</div>
+			<div class="fork">
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel yellow"></div>
+			</div>
+			<div class="fork">
+				<div class="light_pixel yellow"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel blue"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+			</div>
+			<div class="fork">
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel yellow"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+			</div>
+			<div class="fork">
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel blue"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+				<div class="light_pixel green"></div>
+			</div>
+			<div class="pot">
+				<div class="light_pixel brown"></div>
+				<div class="light_pixel brown"></div>
+				<div class="light_pixel brown"></div>
+				<div class="light_pixel brown"></div>
+				<div class="light_pixel brown"></div>
+				<div class="light_pixel brown"></div>
+				<div class="light_pixel brown"></div>
+			</div>
+			<div class="pot">
+				<div class="light_pixel brown"></div>
+				<div class="light_pixel brown"></div>
+				<div class="light_pixel brown"></div>
+				<div class="light_pixel brown"></div>
+				<div class="light_pixel brown"></div>
+			</div>
+			<div class="pot">
+				<div class="light_pixel brown"></div>
+				<div class="light_pixel brown"></div>
+				<div class="light_pixel brown"></div>
+				<div class="light_pixel brown"></div>
+				<div class="light_pixel brown"></div>
+			</div>
+		</div>
+	</body>
+</html>

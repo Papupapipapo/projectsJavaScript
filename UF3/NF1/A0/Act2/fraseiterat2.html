@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Reiterat</title>
+</head>
+
+<body>
+	<h1>Numero de vocals Metode 2</h1>
+	<p id="Contador"></p>
+</body>
+	<script>
+		//AQUEST METODE ES PER A FRASES MES CURTES, JA QUE MIRA LLETRA PER LLETRA
+		var frase = prompt("Diguem una frase i et dire el numero de cada vocal que te");
+		var resu = document.getElementById('Contador');
+		var fraseArray = frase.split(" "); //Aquest metode anira paraula per paraula
+		var vocals = [["a", 0], ["e",0], ["i",0], ["o",0], ["u",0]];
+		
+		for (var para = 0; para < fraseArray.length; para++){ //per paraula
+			
+			var paraulaActArr = fraseArray[para].split("");
+			
+			for(var lletParau = 0; lletParau < paraulaActArr.length;lletParau++) //Mirem lletra per lletra
+				
+				for(var voc = 0; voc < vocals.length; voc++){ // Anem vocal per vocal
+					
+						if((paraulaActArr[lletParau].toLowerCase()) == (vocals[voc][0])){ //Convertim la lletra a lowercase per si acas i mirarem si son el mateix
+							vocals[voc][1]++; //Suma al contador de la lletra
+						}
+				}
+			}
+		 
+		
+		for(var p = 0; p < vocals.length; p++){
+			resu.innerHTML += ('La vocal <b>' +vocals[p][0] +'</b> ha aparegut ' + vocals[p][1] + ' vegades.</br>'); //Aixo escriura els resultats
+		}
+		var fraseSenseEspais = frase.replace(/\s/g, '');
+			resu.innerHTML += ('La longitud de la frase es de  <b>' +frase.length +'</b> caracters amb espais, sense espais  <b>' + fraseSenseEspais.length + ' </b>caracters.</br>');
+	</script>
+</html>
