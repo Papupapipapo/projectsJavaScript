@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunicació asíncrona (ahora con iconas!) (AJAX amb jQuery)</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="script.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+        body,html{
+            display:grid;
+            place-items: center;
+            height:100%;
+            background-color: #506AD4;
+            font-family: 'Montserrat', sans-serif;
+        }
+       .containerMain{
+           background-color: #fff;
+           padding: 1rem;
+           text-align: center;
+           min-height: 380px;
+           border-radius: 20px;
+           box-shadow: 3px 3px 10px #888888;
+       }
+       .gridTemperatures{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 10px;
+        grid-auto-rows: minmax(10ch, auto);
+        margin-top: 2ch;
+       }
+       .gridTemperatures div{
+        border: 1px solid black;
+        box-shadow: 3px 3px 10px #888888;
+        place-items: center;
+        display:grid;
+        padding:1rem;
+        border-radius: 10px;
+       }
+       .gridTemperatures div img{
+           height:70px;
+       }
+       select,option{
+        font-family: 'Montserrat', sans-serif;
+       }
+    </style>
+</head>
+<body>
+    <div class="containerMain">
+        <h1>Comunicació asíncrona<br>(AJAX amb jQuery)</h1>
+        <select id="comarques" name="comarques"></select>
+        
+        <p id="dia"></p>
+        <div class="gridTemperatures">
+            <div id="tempMin"></div>
+            <div id="tempMax"></div>
+            <div id="tempMati"></div>
+            <div id="tempTard"></div>
+        </div>
+    </div>
+</body>
+</html>

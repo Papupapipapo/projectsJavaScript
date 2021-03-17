@@ -1,0 +1,38 @@
+<html>
+
+<body>
+    <script src="https://code.jquery.com/jquery 3.4.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("button:eq(0)").click(function () {
+                $.ajax({
+                    url: "https://httpbin.org/get",
+                    type: "get",
+                    data: {
+                        name: "Anton"
+                    },
+                    success: function (result, status) {
+                        $("#container").html(JSON.stringify(result) + "<br/>" + status);
+                    }
+                });
+            });
+            $("button:eq(1)").click(function () {
+                $.ajax({
+                    url: "https://httpbin.org/post",
+                    type: "post",
+                    data: {
+                        name: "Anton"
+                    },
+                    success: function (result, status) {
+                        $("#container").html(JSON.stringify(result) + "<br/>" + status);
+                    }
+                });
+            });
+        });
+    </script>
+    <button>Send data jQuery GET</button>
+    <button>Send data jQuery POST</button>
+    <div id="container"></div>
+</body>
+
+</html>
